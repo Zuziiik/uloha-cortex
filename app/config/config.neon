@@ -21,5 +21,6 @@ session:
 
 
 services:
-
+	- App\Model\CardsManager
+	- App\Model\UserManager
 	router: App\RouterFactory::createRouter
