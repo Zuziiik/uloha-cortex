@@ -307,6 +307,8 @@ class Container_768891042d extends Nette\DI\Container
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
+		$service->userManager = $this->getService('26_App_Model_UserManager');
+		$service->cardsManager = $this->getService('25_App_Model_CardsManager');
 		$service->invalidLinkMode = 5;
 		return $service;
 	}
@@ -321,6 +323,8 @@ class Container_768891042d extends Nette\DI\Container
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
+		$service->userManager = $this->getService('26_App_Model_UserManager');
+		$service->cardsManager = $this->getService('25_App_Model_CardsManager');
 		$service->invalidLinkMode = 5;
 		return $service;
 	}

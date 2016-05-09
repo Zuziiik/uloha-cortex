@@ -51,6 +51,8 @@
 				->setAttribute('class', 'form-control input-small');
 			$form->addText(UserManager::COLUMN_CO, 'cislo orientacni')
 				->setAttribute('class', 'form-control input-small');
+			$form->addText(UserManager::COLUMN_PSC, 'PSC')->setRequired('Prosím vyplňte PSC.')
+				->setAttribute('class', 'form-control input-small');
 			$form->addText(UserManager::COLUMN_STATE, 'stat')->setDefaultValue('Ceska Republika')
 				->setAttribute('class', 'form-control input-small');
 			$cards = $this->cardsManager->getFreeCards();

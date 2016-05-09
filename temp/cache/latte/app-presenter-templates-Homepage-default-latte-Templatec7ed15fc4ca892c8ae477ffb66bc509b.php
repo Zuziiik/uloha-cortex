@@ -12,7 +12,39 @@ list($_b, $_g, $_l) = $template->initialize('a4949127ba', 'html')
 // block content
 //
 if (!function_exists($_b->blocks['content'][] = '_lb8e83eb4f4a_content')) { function _lb8e83eb4f4a_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-;
+?><h2>Počet uživatelů : <?php echo Latte\Runtime\Filters::escapeHtml($usersCount, ENT_NOQUOTES) ?></h2>
+<h2>počet přiřazených karet : <?php echo Latte\Runtime\Filters::escapeHtml($cardsCount, ENT_NOQUOTES) ?></h2>
+<h2>Top 10 zákazníků podle obratu nákupů za posledních 30 dní</h2>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Jméno</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Datum registrace</th>
+            <th>adresa</th>
+        </tr>
+<?php $iterations = 0; foreach ($users as $user) { ?>
+                <tr>
+                    <td><?php echo Latte\Runtime\Filters::escapeHtml($user->getJmeno(), ENT_NOQUOTES) ?></td>
+                    <td><?php echo Latte\Runtime\Filters::escapeHtml($user->getEmail(), ENT_NOQUOTES) ?></td>
+                    <td><?php echo Latte\Runtime\Filters::escapeHtml($user->getTelefon(), ENT_NOQUOTES) ?></td>
+                    <td><?php echo Latte\Runtime\Filters::escapeHtml($user->getDatumRegistrace(), ENT_NOQUOTES) ?></td>
+                    <td><?php echo Latte\Runtime\Filters::escapeHtml($user->getAdresa()->getUlice(), ENT_NOQUOTES) ?>
+ <?php echo Latte\Runtime\Filters::escapeHtml($user->getAdresa()->getMesto(), ENT_NOQUOTES) ?>
+ <?php echo Latte\Runtime\Filters::escapeHtml($user->getAdresa()->getCP(), ENT_NOQUOTES) ?>
+
+                        <?php if ($user->getAdresa()->getCO()=== '') { ?>/<?php echo Latte\Runtime\Filters::escapeHtml($user->getAdresa()->getCO(), ENT_NOQUOTES) ;} ?>
+
+                        <?php echo Latte\Runtime\Filters::escapeHtml($user->getAdresa()->getPSC(), ENT_NOQUOTES) ?>
+ <?php echo Latte\Runtime\Filters::escapeHtml($user->getAdresa()->getStat(), ENT_NOQUOTES) ?>
+
+                    </td>
+                </tr>
+<?php $iterations++; } ?>
+    </table>
+</div><?php
 }}
 
 //
@@ -35,6 +67,8 @@ if (empty($_l->extends) && !empty($_control->snippetMode)) {
 //
 // main template
 //
-if ($_l->extends) { ob_end_clean(); return $template->renderChildTemplate($_l->extends, get_defined_vars()); }
+?>
+
+<?php if ($_l->extends) { ob_end_clean(); return $template->renderChildTemplate($_l->extends, get_defined_vars()); }
 call_user_func(reset($_b->blocks['content']), $_b, get_defined_vars()) ; 
 }}
